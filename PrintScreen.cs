@@ -20,12 +20,8 @@
             Boolean _booleanSalvedPrint = false;
             while (_booleanSalvedPrint == false)
             {
-                try
-                {
                     Clipboard.GetImage().Save(stringPath + date);
                     _booleanSalvedPrint = true;
-                }
-                catch { }
             }
 
             Clipboard.Clear();

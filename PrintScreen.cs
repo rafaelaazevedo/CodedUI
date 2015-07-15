@@ -16,7 +16,7 @@
             DateTime x = DateTime.Now;
             string date = x.ToString().Replace("/", "").Replace(":", "").Replace(" ", "_") + ".jpg";
 
-            PublicFunctions.VerificaPath(Values.stringPath);
+            PublicFunctions.VerifyPath(Values.stringPath);
 
             Boolean _booleanSalvedPrint = false;
             while (_booleanSalvedPrint == false)
@@ -43,7 +43,7 @@
                 _intFAIL = 0;
             }
 
-            dateAccess dateAccessBancoDadosDB = PublicFunctions.AbrirBancoDadosDB(Values);
+            dateAccess dateAccessBancoDadosDB = PublicFunctions.OpenDB(Values);
 
             dateAccessBancoDadosDB.Execute("INSERT INTO ResultExecution(IDScreen,Scenario,SCREEN,DESCRIPTION,PathPRINT,FAIL)" +
             "VALUES ('" + Values.intIDExecution + "','" + Values.stringTableCase + "','" + Values.stringTableName + "','" + _stringMessage + "','" + Values.stringPath + date + "','" + _intFAIL + "')");

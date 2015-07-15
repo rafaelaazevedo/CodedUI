@@ -1,5 +1,6 @@
- public static void PrintScreen(PublicFunctions Values, string _stringMessage, Boolean FULLSCREEN = false, Boolean FAIL = false)
+ public static void PrintScreen(string _stringMessage, Boolean FULLSCREEN = false, Boolean FAIL = false)
         {
+            string stringPath = "YOUR PATH"
             int _intFAIL;
             Thread.Sleep(2000);
             if ((FULLSCREEN == false))
@@ -16,14 +17,12 @@
             DateTime x = DateTime.Now;
             string date = x.ToString().Replace("/", "").Replace(":", "").Replace(" ", "_") + ".jpg";
 
-            PublicFunctions.VerifyPath(Values.stringPath);
-
             Boolean _booleanSalvedPrint = false;
             while (_booleanSalvedPrint == false)
             {
                 try
                 {
-                    Clipboard.GetImage().Save(Values.stringPath + date);
+                    Clipboard.GetImage().Save(stringPath + date);
                     _booleanSalvedPrint = true;
                 }
                 catch { }

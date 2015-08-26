@@ -1,5 +1,6 @@
- public static void PrintScreen(PublicFunctions Values, string _stringMessage, Boolean FULLSCREEN = false, Boolean FAIL = false)
+ public static void PrintScreen(string _stringMessage, Boolean FULLSCREEN = false, Boolean FAIL = false)
         {
+            string stringPath = "YOUR PATH"
             int _intFAIL;
             Thread.Sleep(2000);
             if ((FULLSCREEN == false))
@@ -16,17 +17,11 @@
             DateTime x = DateTime.Now;
             string date = x.ToString().Replace("/", "").Replace(":", "").Replace(" ", "_") + ".jpg";
 
-            PublicFunctions.VerificaPath(Values.stringPath);
-
             Boolean _booleanSalvedPrint = false;
             while (_booleanSalvedPrint == false)
             {
-                try
-                {
-                    Clipboard.GetImage().Save(Values.stringPath + date);
+                    Clipboard.GetImage().Save(stringPath + date);
                     _booleanSalvedPrint = true;
-                }
-                catch { }
             }
 
             Clipboard.Clear();
@@ -43,7 +38,7 @@
                 _intFAIL = 0;
             }
 
-            dateAccess dateAccessBancoDadosDB = PublicFunctions.AbrirBancoDadosDB(Values);
+            dateAccess dateAccessBancoDadosDB = PublicFunctions.OpenDB(Values);
 
             dateAccessBancoDadosDB.Execute("INSERT INTO ResultExecution(IDScreen,Scenario,SCREEN,DESCRIPTION,PathPRINT,FAIL)" +
             "VALUES ('" + Values.intIDExecution + "','" + Values.stringTableCase + "','" + Values.stringTableName + "','" + _stringMessage + "','" + Values.stringPath + date + "','" + _intFAIL + "')");

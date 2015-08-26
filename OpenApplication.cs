@@ -1,6 +1,8 @@
 using System;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+using Microsoft.VisualStudio.TestTools.UITesting.Playback;
+using System.Windows.Forms;
 
 namespace ProjectName
 {
